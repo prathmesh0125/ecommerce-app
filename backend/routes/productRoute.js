@@ -13,7 +13,7 @@ router.route("/products").get(getAllproduct);
 router.route("/products/new").post(createProduct);
 
 // update products
-router.route("/products/:id").put(updateProducts).delete(deleteProduct)
-// router.route("/products/:id").delete(deleteProduct)
+// router.route("/products/:id").put(updateProducts).delete(deleteProduct)
+router.route("/products/:id").delete(deleteProduct)
 
 module.exports = router;

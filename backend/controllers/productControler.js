@@ -36,19 +36,20 @@ exports.updateProducts = async (req, res, next) => {
     success: true,
     product,
   });
-  // delete product
-  exports.deleteProduct = async  (req, res, next) =>{
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(500).json({
-        success: false,
-        msg: "product not found",
-      });
-    }
-    await product.remove();
-    res.status(200).json({
-      success: true,
-      msg: "Product is deleted",
+};
+// delete product
+exports.deleteProduct = async (req, res, next) => {
+  // const product = await Product.findById(req.params.id);
+  const product = await Product.findByIdAndDelete(req.params.id);
+  if (!product) {
+    return res.status(500).json({
+      success: false,
+      msg: "product not found",
     });
-  };
+  }
+  // await product.remove();
+  res.status(200).json({
+    success: true,
+    msg: "Product is deleted",
+  });
 };
