@@ -19,7 +19,7 @@ exports.getAllproduct = asyncErrorHandler(async function (req, res) {
     allProducts,
   });
 });
-// get one produc detials by id
+// get one product detials by id
 exports.getproductdetails = asyncErrorHandler(async function (req, res, next) {
   const product = await Product.findById(req.params.id);
   if (!product) {

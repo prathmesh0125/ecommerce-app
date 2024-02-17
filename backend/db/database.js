@@ -6,8 +6,7 @@ const connectDatabase = () => {
     .then((data) => {
       console.log(`Database conection successful on ${data.connection.host}`.green);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    //no need catch because we handled in server.js
+    
 };
 module.exports = connectDatabase;
