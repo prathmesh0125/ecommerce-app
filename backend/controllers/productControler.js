@@ -18,6 +18,20 @@ exports.getAllproduct = async function (req, res) {
   });
 };
 
+exports.getproductdetails = async function (req, res) {
+  const product = await Product.findById(req.params.id);
+  if (!product) {
+    res.status(500).json({
+      success: false,
+      msg: "product not found",
+    });
+  }
+  res.status(200).json({
+    success: true,
+    product,
+  });
+};
+
 // update product
 exports.updateProducts = async (req, res, next) => {
   let product = await Product.findById(req.params.id);
