@@ -14,13 +14,18 @@ exports.createProduct = asyncErrorHandler(async (req, res, next) => {
 
 // get all products
 exports.getAllproduct = asyncErrorHandler(async function (req, res) {
-  // const allProducts = await Product.find();
+  const resultperPage=5;
+  const productcount= await Product.countDocuments();
+  // const allProducts = await Product.find();s
+  
   const apiSearch = new Apifeatures(Product.find(), req.query);
-  apiSearch.search().filter();
+  apiSearch.search().filter().pagination(resultperPage);
   const allProducts = await apiSearch.query;
   res.status(200).json({
     success: true,
     allProducts,
+    productcount
+
   });
 });
 // get one product detials by id
