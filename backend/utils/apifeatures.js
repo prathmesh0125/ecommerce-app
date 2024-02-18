@@ -31,11 +31,10 @@ class Apifeatures {
     // console.log(queryStr);
     return this;
   }
-  pagination(resultperPage){
-    const currentpage=this.queryStr.page || 1;
-    const skip=resultperPage*(currentpage -1 )
-    this.query=this.query.limit(resultperPage).skip(skip);
-
+  pagination(resultperPage) {
+    const currentpage = this.queryStr.page || 1;
+    const skip = resultperPage * (currentpage - 1);
+    this.query = this.query.limit(resultperPage).skip(skip);
   }
 }
 module.exports = Apifeatures;
